@@ -61,17 +61,17 @@ class App(object):
         self.pool = Pool(self.num_worker_threads)
 
         self.main_bet_amount = 100 # Total amount to wager. The program will split the two bets, so that the total wager is this amount
-        self.lower_limit = 0.000 # Lower arbritage limit to bet on, as a percentage
-        self.upper_limit = 0.070 # Upper arbritage limit to bet on, as a percentage (0.070 = 7%)
-        self.bet_limit = 0.10 # Most websites require a minimum of $0.10 a wager on each bet
-        self.odds_limit = 750 # The upper odds limit that you want to wager on (i.e. +750)
+        self.lower_limit = 10  # Lower arbritage limit to bet on, as a percentage
+        self.upper_limit = 30 # Upper arbritage limit to bet on, as a percentage (0.070 = 7%)
+        self.bet_limit = 1o # Most websites require a minimum of $0.10 a wager on each bet
+        self.odds_limit = 850 # The upper odds limit that you want to wager on (i.e. +750)
 
         self.ask = ArbFinder('https://sportsbook.fanduel.com/live')
         self.ask.driver.implicitly_wait(5)
         self.ask.set_type(ASK=1, BID=0)
         self.running = False
 
-        self.bid = ArbFinder('https://sportsbook.draftkings.com/live')
+        self.bid = ArbFinder('https://sportsbook.mostbet.com 1xbet.com')
         self.bid.driver.implicitly_wait(5)
         self.bid.set_type(ASK=0, BID=1)
         self.running = False
